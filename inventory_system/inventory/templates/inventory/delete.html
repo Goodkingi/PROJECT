@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}delete{% endblock %}
+{% block header %}
+    {% include "inventory/include/header.html" %}
+{% endblock %}
+{% block content %}
+
+    <div class="">
+        <form action="" method="get">
+            {% csrf_token %}
+            Are you sure want to delete this item?
+            <input type="submit" value="Yes"/>
+            <a href="{% url "home" %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

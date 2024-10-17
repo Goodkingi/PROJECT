@@ -1,0 +1,24 @@
+{% extends "inventory/base.html" %}
+{% load static %}
+{% block title %}   Upload PDF {% endblock %}
+{% block header %}
+    {% include 'inventory/include/header.html' %}
+{% endblock %}
+{% block content %}
+<body>
+    <h1>Upload PDF</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload</button>
+    </form>
+    <h2>Uploaded Files</h2>
+    <ul>
+        {% for file in files %}
+            <li>
+                <a href="{% url 'download_pdf' file.id %}">{{ file.file.name }}</a>- Uploaded at: {{ file.uploaded_at|date:"Y-m-d H:i:s" }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+{% endblock %}

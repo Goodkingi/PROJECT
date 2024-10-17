@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About TMIS - Total Management Inventory System{% endblock %}
+
+{% block header %}
+    {% include "inventory/include/header.html" %}
+{% endblock %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'path/to/styles.css' %}">
+
+    <body class="dashboard" data-admin-utc-offset="0">
+        <!-- Container -->
+        <div class="container">
+            <main id="content-start" class="content" tabindex="-1">
+                <!-- Content -->
+                <h1>About TMIS</h1>
+                
+                <section>
+                    <h2>Mission</h2>
+                    <p>At TMIS, we aim to enhance operational efficiency by providing a user-friendly and reliable inventory management system tailored to meet the unique needs of your organization. We understand the challenges of managing equipment, and our goal is to simplify the process, allowing you to focus on what matters most—your core business.</p>
+                </section>
+                
+                <section>
+                    <h2>What is TMIS?</h2>
+                    <p>TMIS, or Total Management Inventory System, is a robust local inventory management tool that helps organizations efficiently track, manage, and optimize their equipment inventory. With our system, you can gain real-time insights into your equipment status, usage, and availability, ensuring that your operations run smoothly and effectively.</p>
+                </section>
+
+                <section>
+                    <h2>Key Features</h2>
+                    <ul>
+                        <li><strong>User-Friendly Interface:</strong> Intuitive design for all users.</li>
+                        <li><strong>Real-Time Tracking:</strong> Monitor equipment status in real-time.</li>
+                        <li><strong>Comprehensive Reporting:</strong> Generate detailed reports on inventory levels.</li>
+                        <li><strong>Customizable Alerts:</strong> Set alerts for low stock and maintenance.</li>
+                        <li><strong>Secure Local Storage:</strong> Keep your data secure within your organization.</li>
+                        <li><strong>Seamless Integration:</strong> Integrate with existing systems easily.</li>
+                    </ul>
+                </section>
+            </main>
+        </div>
+    </body>
+{% endblock %}

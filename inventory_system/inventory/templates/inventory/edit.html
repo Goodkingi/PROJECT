@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header %}
+    {% include "inventory/include/header.html" %}
+{% endblock %}
+{% block title %}update{% endblock %}
+{% include "inventory/include/header.html" %}
+{% block content %}
+    <div class="">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form | crispy }}
+            Are you sure want to save this item?
+            <input type="submit" value="Yes"/>
+            <a href="{% url "home" %}">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

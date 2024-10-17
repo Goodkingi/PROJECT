@@ -1,0 +1,32 @@
+<!-- allocate_product.html -->
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Allocate Product{% endblock %}
+{% block header %}
+    {% include "inventory/include/header.html" %}
+{% endblock %}
+{% block content %}
+<body class="dashboard">
+    <div id="container">
+        <div class="main" id="main">
+            <main id="content-start" class="content" tabindex="-1">
+                <div id="content" class="colMS">
+                    <h2>Allocate Product</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="button">Allocate Product</button>
+                    </form>
+                    {% if messages %}
+                        <ul>
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+{% endblock %}

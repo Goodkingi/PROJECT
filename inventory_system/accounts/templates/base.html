@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Inventory System{% endblock %}</title>
+  
+   
+    <link rel="stylesheet" href="{% static "accounts/css/base.css" %}">
+    <link rel="stylesheet" href=" {% static "inventory/css/dark_mode.css" %}">
+    <script src="{% static "inventory/js/theme.js" %}"></script>
+    <link rel="stylesheet" href=" {% static "accounts/css/nav_sidebar.css" %}">
+    <script src="{% static "inventory/js/nav_sidebar.js" %} " defer></script>
+    <link rel="stylesheet" href="{% static "login.css" %}">
+    <link rel="stylesheet" href="{% static "accounts/css/dashboard.css" %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href=" {% static "/accounts/css/responsive.css" %}">
+    {#    <link rel="stylesheet" href=" {% static "/inventory/css/dash.css.css" %}">#}
+    <link rel="stylesheet" href="{% static "accounts/inventory_apps.css" %}">
+    <meta name="robots" content="NONE,NOARCHIVE">
+
+ <script>
+        function printReport() {
+            window.print();
+        }
+    </script>
+</head>
+<body>
+{#    <nav>#}
+{#        <ul>#}
+{#            {% if user.is_authenticated %}#}
+{#                <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>#}
+{#                <li><a href="{% url 'user_dashboard' %}">User Dashboard</a></li>#}
+{#                <li><a href="{% url 'add_product' %}">Add Product</a></li>#}
+{#               <li><a href="{% url 'admin_ledger_view' %}">View Ledger</a></li>  <!-- Link to ledger -->#}
+{#                <li><a href="{% url 'generate_report' %}">REport</a></li>#}
+{#                <li><a href="{% url 'logout' %}">Logout</a></li>#}
+{#            {% else %}#}
+{#                <li><a href="{% url 'login' %}">Login</a></li>#}
+{#                <li><a href="{% url 'register' %}">Register</a></li>#}
+{#            {% endif %}#}
+{#        </ul>#}
+{#    </nav>#}
+{% block header %}
+   
+{% endblock %}
+    <div class="container">
+        {% block content %}
+            
+            
+        {% endblock %}
+    {% block footer %}
+    {#    <div class="bg-light">#}
+    {#        <footer class="py-3 my-4">#}
+    {#            <p class="text-center text-muted">&copy; Inventory Management System, (TIMS).</p>#}
+    {#        </footer>#}
+    {#    </div>#}
+{% endblock %}
+     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+   
+</body>
+    </div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Product List{% endblock %}
+{% block header %}
+    {% include "inventory/include/header.html" %}
+{% endblock %}
+{% block content %}
+
+<div class="dashboard" data-admin-utc-offset="0">
+    <!-- Container -->
+    <div id="container">
+        <div class="main" id="main">
+
+            <main id="content-start" class="content" tabindex="-1">
+
+                <!-- Content -->
+                <div id="content" class="colMS">
+                    <h1>PRODUCT LIST</h1>
+
+                    <div id="content-main">
+                        <section class="app-auth module">
+                            <table class="table table-bordered">
+                                <caption>
+                                    <a href="{% url 'products' %}" class="section" title="">REGISTERED PRODUCTS</a>
+                                </caption>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Product Name</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">TAG</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for product in products %}
+                                        {% if user.username == product.created_by.username %}
+                                            <tr class="model-user">
+                                                <td><a href="{% url 'detail-page' product.id %}">{{ product.name }}</a></td>
+                                                <td>{{ product.quantity }}</td>
+                                                <td>{{ product.serial }}</td>
+                                                <td>{{ product.category }}</td>
+                                                <td>{{ product.description }}</td>
+                                            </tr>
+                                        {% endif %}
+                                    {% empty %}
+                                        <tr>
+                                            <td colspan="5" class="text-center">No products found.</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </section>
+
+                        <h3 style="color: #006b1b">TOTAL ITEMS: {{ products.count }}</h3>
+                    </div>
+
+                    <div id="content-related">
+                        <section class="module" id="recent-actions-module">
+                            <h2>PRODUCT FORM</h2>
+                            <h3>Add products</h3>
+                            <form method="POST">
+                                <hr>
+                                {% csrf_token %}
+                                {{ form }} <!-- If using crispy forms for styling -->
+                                <br>
+                                <button type="submit" class="btn btn-primary">Add</button>
+                            </form>
+                        </section>
+                    </div>
+
+                    <br class="clear">
+                </div>
+                <!-- END Content -->
+            </main>
+
+        </div>
+        <footer id="footer"></footer>
+    </div>
+    <!-- END Container -->
+
+</div>
+
+{% endblock %}

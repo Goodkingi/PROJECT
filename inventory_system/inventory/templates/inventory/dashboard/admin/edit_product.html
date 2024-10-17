@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    <title>Edit Product</title>
+{% endblock %}
+{% block header %}
+    {% include "inventory/include/header.html" %}
+{% endblock %}
+{% block content %}
+    <h1>Edit Product: {{ product.name }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update Product">
+    </form>
+    <a href="{% url 'admin_dashboard' %}">Back to Dashboard</a>
+{% endblock %}

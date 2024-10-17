@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Ledger Book{% endblock %}
+
+{% block header %}
+    {% include "inventory/include/header.html" %}
+{% endblock %}
+
+{% block content %}
+    <body class="app-inventory model-product change-list">
+        <div id="container">
+            <header id="header">
+                <div id="branding">
+                    <div id="site-name" style="text-align:center">
+                        <a href="{% url 'ledger' %}">IMS LEDGER BOOK</a>
+                    </div>
+                </div>
+            </header>
+
+            <main id="content-start" class="content" tabindex="-1">
+                <h1>Select product to change</h1>
+                <div id="content-main">
+                    <div class="module filtered" id="changelist">
+                        <div class="changelist-form-container">
+                            <div id="toolbar">
+                                <!-- Additional buttons or actions can go here -->
+                            </div>
+
+                            <div class="results">
+                                <table id="result_list">
+                                    <thead>
+                                        <tr>
+                                            <th><input type="checkbox" id="action-toggle" aria-label="Select all"></th>
+                                            <th><a href="?o=1">Name</a></th>
+                                            <th><a href="?o=2">Brand</a></th>
+                                            <th><a href="?o=3">Description</a></th>
+                                            <th><a href="?o=4">Serial</a></th>
+                                            <th><a href="?o=5">Quantity</a></th>
+                                            <th><a href="?o=6">Category</a></th>
+                                            <th><a href="?o=7">Status</a></th>
+                                            <th><a href="?o=8">Address</a></th>
+                                            <th><a href="?o=9">Batch</a></th>
+                                            <th><a href="?o=10">Condition</a></th>
+                                            <th><a href="?o=11">Operation</a></th>
+                                            <th><a href="?o=12">Action</a></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% if products %}
+                                            {% for product in products %}
+                                                <tr>
+                                                    <td>
+                                                        <label>
+                                                            <input type="checkbox" name="_selected_action" value="{{ product.id }}">
+                                                        </label>
+                                                    </td>
+                                                    <th><a href="{% url 'detail-page' product.id %}">{{ product.name }}</a></th>
+                                                    <td>{{ product.brand }}</td>
+                                                    <td>{{ product.description }}</td>
+                                                    <td>{{ product.serial }}</td>
+                                                    <td>{{ product.quantity }}</td>
+                                                    <td>{{ product.category }}</td>
+                                                    <td>{{ product.status }}</td>
+                                                    <td>{{ product.department.department_name }}</td>
+                                                    <td>{{ product.batch }}</td>
+                                                    <td>{{ product.condition }}</td>
+                                                    <td>{{ product.operation }}</td>
+                                                    <td>
+                                                        <a class="btn btn-danger" href="{% url 'delete_product' product.id %}" aria-label="Delete {{ product.name }}">Delete</a> |
+                                                        <a class="button" href="{% url 'products' %}" aria-label="Add new product">Add</a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        {% else %}
+                                            <tr>
+                                                <td colspan="13" style="text-align:center;">No products found.</td>
+                                            </tr>
+                                        {% endif %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <p class="paginator">{{ products.count }} products found</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+{% endblock %}

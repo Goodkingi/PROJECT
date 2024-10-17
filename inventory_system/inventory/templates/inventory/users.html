@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }} {% endblock %}
+{% block header %}
+    {% include "inventory/include/header.html" %}
+{% endblock %}
+{% block content %}
+    <div class="container" style="display: flex; justify-content: center; align-items: center;">
+
+        <table class="table" style="width: 80%; margin: auto; border-collapse: separate; border-spacing: 0 10px; text-align: center;">
+            <thead>
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.first_name }}</td>
+                        <td>{{ user.last_name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.userprofile.physical_address }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <style>
+        @media (max-width: 600px) {
+            .table {
+                width: 95%; /* Adjust width for smaller screens */
+                font-size: 14px; /* Smaller font for smaller screens */
+            }
+            th, td {
+                padding: 5px; /* Less padding for smaller screens */
+            }
+        }
+    </style>
+{% endblock %}
+
